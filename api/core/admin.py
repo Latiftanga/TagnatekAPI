@@ -10,7 +10,7 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['email']
 
     fieldsets = (
-        (_('Personal Info'), {'fields': ('email', 'password')}),
+        (_('Personal Info'), {'fields': ('email', 'role')}),
         (_('Permissions'), {'fields': (
             'is_active',
             'is_staff',
@@ -25,5 +25,5 @@ class UserAdmin(BaseUserAdmin):
             }),
         )
 
-
+admin.site.register(models.School)
 admin.site.register(models.User, UserAdmin)

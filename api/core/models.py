@@ -7,11 +7,40 @@ from django.contrib.auth.models import (
     )
 
 
-def profile_file_path(instance, filename):
+def img_file_path(instance, filename):
     """Generate file path for new recipe image"""
     ext = filename.split('.')[-1]  # [-1] returns the last item from a list.
     filename = f'_{instance.id}.{ext}'
-    return os.path.join('uploads/users/', filename)
+    file_path = f'uploads/{instance._meta.model.__name__.lower()}/'
+    return os.path.join(file_path, filename)
+
+
+class School(models.Model):
+    '''School Model'''
+    name = models.CharField(max_length=128, unique=True)
+    motto = models.CharField(max_length=128)
+    code = models.CharField(max_length=16, blank=True)
+    address = models.CharField(max_length=128)
+    city = models.CharField(max_length=128)
+    region = models.CharField(max_length=64)
+    phone = models.CharField(max_length=20, blank=True)
+    postal_code = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(max_length=64, blank=True)
+    logo = models.ImageField(
+        None,
+        upload_to=img_file_path,
+        blank=True
+        )
+    created = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    updated_by = models.CharField(max_length=64, blank=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
 
 
 class Permission(models.Model):
@@ -41,7 +70,7 @@ class Role(models.Model):
     updated_by = models.CharField(max_length=64, blank=True)
 
     class Meta:
-        ordering = ('name', )
+        ordering = ('id', )
 
     def __str__(self):
         return self.name
@@ -81,7 +110,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True,
         blank=True
         )
-    image = models.ImageField(None, upload_to=profile_file_path, blank=True)
+    image = models.ImageField(None, upload_to=img_file_path, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     created_by = models.CharField(max_length=64, blank=True)
     updated = models.DateTimeField(auto_now=True)

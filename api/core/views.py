@@ -3,8 +3,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from core.models import Role
 from core.authentication import JWTAuthentication
 from core import serializers, models
+from core.permissions import StaffPermission
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
@@ -96,3 +99,16 @@ class PermissionAPIView(APIView):
             )
 
         return Response(serializer.data)
+
+
+class RoleViewSets(ModelViewSet):
+    '''User roles Viewsets'''
+
+    authentication_classes = (
+        JWTAuthentication,
+        authentication.TokenAuthentication
+        )
+    queryset = Role.objects.all()
+    permission_classes = (StaffPermission, )
+
+    serializer_class = serializers.RoleSerializer

@@ -5,8 +5,7 @@
         "pk": 1,
 
         "fields":{
-            "password": "pbkdf2_sha256$260000$OiYMoQYeGHQDGw7zcTmfhY$mtqDoLnb/BY/Zfh8xFcvUG+FRtofRokwazEZquecxw4=",
-            "last_login": null,
+            "password": "pbkdf2_sha256$260000$ssc8Xwbr7glPckjyKArY4x$J4Bgz+fTtWruI849uS3QzK95KL4WOo7F5eUM0u8qXIY=",
             "is_superuser": true,
             "email": "super@eg.com",
             "is_active": true,

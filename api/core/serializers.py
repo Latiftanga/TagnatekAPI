@@ -3,7 +3,6 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 from core.models import Role
 
-
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for converting user model object"""
 
@@ -87,3 +86,36 @@ class AuthTokenSerializer(serializers.Serializer):
             raise serializers.ValidationError(msg, code='authentication')
         attrs['user'] = user
         return attrs
+
+
+class RoleSerializer(serializers.ModelSerializer):
+    '''User Role model serializer'''
+
+    class Meta:
+        model = Role
+        fields = (
+            'id',
+            'name',
+            'permissions',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+        read_only_fields = (
+            'id',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+
+    def create(self, validated_data):
+        permissions = validated_data.pop('permissions', None)
+        print(validated_data)
+        role = super().create(validated_data)
+
+        if permissions:
+            role.permissions.add(permissions)
+            role.save()
+        return role
