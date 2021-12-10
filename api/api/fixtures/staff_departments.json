@@ -1,0 +1,119 @@
+[
+    {
+        "model": "staff.department",
+        "pk": 1,
+        "fields": {
+            "name": "Accounting",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.Administration",
+        "pk": 2,
+        "fields": {
+            "name": "Accounting",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 3,
+        "fields": {
+            "name": "Catering",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 4,
+        "fields": {
+            "name": "Driving",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 5,
+        "fields": {
+            "name": "Internal Audit",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 6,
+        "fields": {
+            "name": "Laboratory",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 7,
+        "fields": {
+            "name": "Library",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 8,
+        "fields": {
+            "name": "Secretarial",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 9,
+        "fields": {
+            "name": "Security",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 10,
+        "fields": {
+            "name": "Supplies",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 11,
+        "fields": {
+            "name": "Teaching",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 12,
+        "fields": {
+            "name": "Technical",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.department",
+        "pk": 13,
+        "fields": {
+            "name": "Tradesmen",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    }
+]

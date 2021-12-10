@@ -1,0 +1,48 @@
+[
+    {
+        "model": "core.school",
+
+        "pk": 1,
+
+        "fields": {
+            "name": "T. I. Ahmadiyya SHS",
+            "motto": "Be God's Best",
+            "code": "0100106",
+            "address": "Charia Road",
+            "city": "Wa",
+            "region": "Upper West",
+            "postal_code": "636",
+            "email": "uniqueamass.wa@gmail.com",
+            "logo": null,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "created_by": "",
+            "updated": "2021-12-01T16:15:27.854017Z",
+            "updated_by": ""
+        }
+
+    },
+    {
+        "model": "core.school",
+
+        "pk": 2,
+
+        "fields": {
+
+            "name": "Wa SHS",
+            "motto": "",
+            "code": "",
+            "address": "Kumasi Road",
+            "city": "Wa",
+            "region": "Upper West",
+            "phone": "0200000000",
+            "postal_code": "79",
+            "email": "washs@gmail.com",
+            "logo": null,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "created_by": "",
+            "updated": "2021-12-01T16:15:27.854017Z",
+            "updated_by": ""
+        }
+
+    }
+]

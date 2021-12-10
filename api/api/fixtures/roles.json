@@ -1,0 +1,52 @@
+[
+    {
+        "model": "core.role",
+        "pk": 1,
+        "fields": {
+            "name": "super",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z",    
+            "permissions": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    },
+    {
+        "model": "core.role",
+        "pk": 2,
+        "fields": {
+            "name": "admin",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z",    
+            "permissions": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        }
+    },
+    {
+        "model": "core.role",
+        "pk": 3,
+        "fields": {
+            "name": "teacher",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z",    
+            "permissions": [1, 3, 7, 9]
+        }
+    },
+    {
+        "model": "core.role",
+        "pk": 4,
+        "fields": {
+            "name": "student",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z",    
+            "permissions": []
+        }
+    },
+    {
+        "model": "core.role",
+        "pk": 5,
+        "fields": {
+            "name": "parent",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z",    
+            "permissions": []
+        }
+    }
+]

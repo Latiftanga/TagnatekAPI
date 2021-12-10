@@ -1,0 +1,93 @@
+[
+    {
+        "model": "core.permission",
+        "pk": 1,
+        "fields": {
+            "name": "view_users",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 2,
+        "fields": {
+            "name": "edit_users",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z" 
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 3,
+        "fields": {
+            "name": "view_roles",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 4,
+        "fields": {
+            "name": "edit_roles",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 5,
+        "fields": {
+            "name": "view_staff",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 6,
+        "fields": {
+            "name": "edit_staff",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 7,
+        "fields": {
+            "name": "view_students",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 8,
+        "fields": {
+            "name": "edit_students",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 9,
+        "fields": {
+            "name": "view_parent",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    },
+    {
+        "model": "core.permission",
+        "pk": 10,
+        "fields": {
+            "name": "edit_parent",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"    
+        }
+    }
+]

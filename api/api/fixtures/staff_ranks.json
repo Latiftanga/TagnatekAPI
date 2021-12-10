@@ -1,0 +1,11 @@
+[
+    {
+        "model": "staff.rank",
+        "pk": 1,
+        "fields": {
+            "title": "Senior Accountant",
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    }
+]
