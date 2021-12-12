@@ -11,6 +11,10 @@ urlpatterns = [
     path('create', views.CreateUserAPIView.as_view(), name='create_user'),
     path('token', views.CreateTokenAPIView.as_view(), name='token'),
     path('me', views.ManageUserView.as_view(), name='me'),
-    path('roles', views.RoleViewSets.as_view({'get': 'list', 'post': 'create'})),
-    path('roles/<int:pk>', views.RoleViewSets.as_view({'get': 'retrieve', 'put': 'update'}))
+    path('roles', views.RoleViewSets.as_view(
+        {'get': 'list', 'post': 'create'}
+        )),
+    path('roles/<int:pk>', views.RoleViewSets.as_view(
+        {'get': 'retrieve', 'put': 'update', 'patch': 'update'}
+        ))
     ]

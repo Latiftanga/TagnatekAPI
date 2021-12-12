@@ -26,6 +26,8 @@ class StaffPermission(BasePermission):
 
     def has_permission(self, request, view):
         user = request.user
+        if user.is_anonymous:
+            return False
         if view.action == 'create' or view.action == 'list' \
                 or view.action == 'update' or view.action == 'destroy':
             return user.is_staff or user.role.name == 'admin'

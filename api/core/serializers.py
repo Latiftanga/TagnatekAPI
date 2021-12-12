@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
-from core.models import Role
+from core.models import Role, Permission
+
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for converting user model object"""
@@ -112,10 +113,39 @@ class RoleSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         permissions = validated_data.pop('permissions', None)
-        print(validated_data)
         role = super().create(validated_data)
 
         if permissions:
             role.permissions.add(permissions)
             role.save()
         return role
+
+
+class PermissionSerializer(serializers.ModelSerializer):
+    '''User Permission Serializer'''
+    class Meta:
+        model = Permission
+        fields = (
+            'id',
+            'name',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+        read_only_fields = (
+            'id',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+
+
+class UserImageSerializer(serializers.ModelSerializer):
+    """Serializer for uploading images to user profiles"""
+
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'image')
+        read_only_fields = ('id',)

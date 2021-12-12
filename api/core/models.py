@@ -8,7 +8,7 @@ from django.contrib.auth.models import (
 
 
 def img_file_path(instance, filename):
-    """Generate file path for new recipe image"""
+    """Generate file path for new school logo"""
     ext = filename.split('.')[-1]  # [-1] returns the last item from a list.
     filename = f'_{instance.id}.{ext}'
     file_path = f'uploads/{instance._meta.model.__name__.lower()}/'
@@ -76,13 +76,95 @@ class Role(models.Model):
         return self.name
 
 
+def get_user_role(role_name):
+    try:
+        role = Role.objects.get(name=role_name)
+    except Role.DoesNotExist:
+        role = None
+    return role
+
+
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         '''Create and save an new user'''
         if not email:
             raise ValueError('Email must be provided to create new user')
+
         user = self.model(email=self.normalize_email(email), **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_teacher(self, email, password=None, **extra_fields):
+        '''Create and save an new user'''
+
+        if not email:
+            raise ValueError('Email must be provided to create new user')
+
+        role = get_user_role('teacher')
+
+        if not role:
+            raise ValueError('Please create teacher Role first')
+
+        user = self.model(email=self.normalize_email(email), **extra_fields)
+        user.role = role
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_admin(self, email, password=None, **extra_fields):
+        '''Create and save an new user'''
+
+        if not email:
+            raise ValueError('Email must be provided to create new user')
+
+        role = get_user_role('admin')
+
+        if not role:
+            raise ValueError('No role name Admin, Create Admin Role first.')
+
+        user = self.model(email=self.normalize_email(email), **extra_fields)
+        user.role = role
+        user.is_staff = True
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_student(self, email, password=None, **extra_fields):
+        '''Create and save an new user'''
+
+        if not email:
+            raise ValueError('Email must be provided to create new user')
+
+        role = get_user_role('student')
+
+        if not role:
+            raise ValueError('No role name Admin, Create Student Role first.')
+
+        user = self.model(email=self.normalize_email(email), **extra_fields)
+        user.role = role
+        user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_parent(self, email, password=None, **extra_fields):
+        '''Create and save an new parent'''
+
+        if not email:
+            raise ValueError('Email must be provided to create new user')
+
+        role = get_user_role('parent')
+
+        if not role:
+            raise ValueError('No role name Parent, Create Student Role first.')
+
+        user = self.model(email=self.normalize_email(email), **extra_fields)
+        user.role = role
         user.set_password(password)
         user.save(using=self._db)
 
