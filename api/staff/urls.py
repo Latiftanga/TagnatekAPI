@@ -7,6 +7,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 
+router.register('', views.StaffViewSets)
 router.register('departments', views.DepartmentViewSets)
 
 

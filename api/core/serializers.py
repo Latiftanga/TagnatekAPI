@@ -14,6 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "password",
             "role",
+            "school",
             "last_login",
             "created",
             "created_by",
@@ -31,7 +32,8 @@ class UserSerializer(serializers.ModelSerializer):
             'created_by',
             'updated',
             'updated_by',
-            'role'
+            'role',
+            'school'
             )
         extra_kwargs = {
             'password': {'write_only': True, 'min_length': 5}

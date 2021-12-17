@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from core.models import Role
 from core.authentication import JWTAuthentication
 from core import serializers, models
-from core.permissions import StaffPermission
+from core.permissions import IsStaff
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
@@ -38,7 +38,7 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 
 
 @api_view(['POST'])
-@permission_classes(AllowAny, )
+@permission_classes([AllowAny])
 def login(request):
     email = request.data.get('email')
     password = request.data.get('password')
@@ -109,6 +109,6 @@ class RoleViewSets(ModelViewSet):
         authentication.TokenAuthentication
         )
     queryset = Role.objects.all()
-    permission_classes = (StaffPermission, )
+    permission_classes = (IsStaff, )
 
     serializer_class = serializers.RoleSerializer

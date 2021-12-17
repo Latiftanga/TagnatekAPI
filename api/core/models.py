@@ -192,6 +192,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         null=True,
         blank=True
         )
+    school = models.ForeignKey(
+        School,
+        on_delete=models.CASCADE,
+        related_name='users',
+        null=True,
+        blank=True
+        )
     image = models.ImageField(None, upload_to=img_file_path, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     created_by = models.CharField(max_length=64, blank=True)
