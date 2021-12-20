@@ -3,10 +3,8 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
-from staff.serializers import JobSerializer
 from staff.models import Qualification
 from core.models import Role
-from staff.serializers import QualificationSerializer
 from core.permissions import IsStaff
 from core.serializers import UserSerializer
 from core.authentication import JWTAuthentication
@@ -19,8 +17,10 @@ from staff.models import (
 
 from staff.serializers import (
     DepartmentSerializer,
+    QualificationSerializer,
     StaffSerializer,
-    StaffDetailSerializer
+    StaffDetailSerializer,
+    PromotionSerializer
     )
 
 
@@ -74,8 +74,12 @@ class StaffViewSets(
             return QualificationSerializer
         if self.action == 'account':
             return UserSerializer
-        if self.action == 'jobs' or self.action == 'job_detail':
-            return JobSerializer
+        if self.action == 'appointments'\
+                or self.action == 'appointment_detail':
+            return PromotionSerializer
+        if self.action == 'promotions'\
+                or self.action == 'promotion_detail':
+            return PromotionSerializer
         return self.serializer_class
 
     def get_queryset(self):
@@ -104,13 +108,12 @@ class StaffViewSets(
             return Response(serializer.data)
         if request.method == 'POST':
             serializer = QualificationSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save(staff=staff)
-                serializer1 = QualificationSerializer(
-                    staff.qualifications.all(),
-                    many=True
+            if serializer.is_valid(raise_exception=True):
+                serializer.save(
+                    created_by=request.user.email,
+                    staff=staff
                     )
-                return Response(serializer1.data)
+                return Response(serializer.data)
         return Response(data=None, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
     @action(
@@ -121,10 +124,10 @@ class StaffViewSets(
         )
     def qualification_detail(self, request, q_id, pk=None):
         staff = self.get_object()
+
         if request.method == 'GET':
-            serializer = QualificationSerializer(
-                staff.qualifications.filter(id=q_id).first()
-                )
+            qs = staff.qualifications.filter(id=q_id).first()
+            serializer = QualificationSerializer(qs)
             return Response(serializer.data)
         if request.method == 'PUT':
             instance = Qualification.objects.get(id=q_id)
@@ -143,7 +146,10 @@ class StaffViewSets(
     def account(self, request, pk=None):
         staff = self.get_object()
         if request.method == 'GET':
-
+            if staff.user:
+                return UserSerializer((staff.user).data)
+            return Response({'message': f'{str(staff)} has no account'})
+        if request.method == 'POST':
             serializer = UserSerializer(data=request.data)
             if serializer.is_valid(raise_exception=True):
                 role = Role.objects.get(name='teacher')
@@ -153,56 +159,110 @@ class StaffViewSets(
                     school=request.user.school
                     )
                 staff.user = user
-                staff.save(updated_by=request.user.email)
+                staff.save()
                 return Response(UserSerializer(user).data)
         return Response(data=None, status=status.HTTP_400_BAD_REQUEST)
 
     @action(
-        methods=['GET', 'PUT', 'DELETE'],
+        methods=['GET', 'POST'],
         detail=True,
-        url_path='jobs/(?P<j_id>[^/.]+)',
-        url_name='job_detail'
+        url_path='appointments',
+        url_name='appointments'
         )
-    def jobs(self, request, pk=None):
-        '''Staff jobs '''
+    def appointments(self, request, pk=None):
+        '''Staff appontments '''
         staff = self.get_object()
         if request.method == 'GET':
-            jobs = staff.jobs.all()
-            serializer = JobSerializer(jobs, many=True)
+            appointments = staff.appointments.all()
+            serializer = PromotionSerializer(appointments, many=True)
             return Response(serializer.data)
         if request.method == 'POST':
-            serializer = JobSerializer(data=request.data)
+            print(request.data)
+            serializer = PromotionSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             job = serializer.save(
+                staff=staff,
                 created_by=request.user.email,
                 )
-            staff.jobs.add(job)
             staff.save()
-            return Response(JobSerializer(staff.jobs, many=True).data)
+            return Response(PromotionSerializer(job).data)
         return Response(data=None, status=status.HTTP_400_BAD_REQUEST)
 
     @action(
         methods=['GET', 'PUT', 'DELETE'],
         detail=True,
-        url_path='jobs/(?P<j_id>[^/.]+)',
-        url_name='job_detail'
+        url_path='appointments/(?P<a_id>[^/.]+)',
+        url_name='appointment_detail'
         )
-    def job_detail(self, request, j_id, pk=None):
-        '''viewing and updating job by a particular staff'''
+    def appointement_detail(self, request, a_id, pk=None):
+        '''viewing and updating appointment'''
         staff = self.get_object()
-        job = staff.jobs.filter(id=j_id).first()
-        if job:
+        appointment = staff.appointments.filter(id=a_id).first()
+        if appointment:
             if request.method == 'GET':
-                return Response(JobSerializer(job).data)
+                return Response(PromotionSerializer(appointment).data)
             if request.method == 'PUT':
-                serializer = JobSerializer(job, request.data)
+                serializer = PromotionSerializer(appointment, request.data)
                 serializer.is_valid(raise_exception=True)
                 serializer.save(
                     updated_by=request.user.email
                     )
                 return Response(serializer.data)
             if request.method == 'DELETE':
-                job.delete()
+                appointment.delete()
+                return Response(data=None, status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response(data=None, status=status.HTTP_404_NOT_FOUND)
+
+    @action(
+        methods=['GET', 'POST'],
+        detail=True,
+        url_path='promotions',
+        url_name='promotions'
+        )
+    def promotions(self, request, pk=None):
+        '''Staff promotion'''
+        staff = self.get_object()
+
+        if request.method =='GET':
+            promotions = staff.promotions.all()
+            serializer = PromotionSerializer(promotions, many=True)
+            return Response(serializer.data)
+        if request.method == 'POST':
+            serializer = PromotionSerializer(data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save(
+                    created_by=request.user.email,
+                    staff=staff,
+                    )
+            return Response(serializer.data)
+        return Response(
+            {'message': 'Method not allowed'},
+            status=status.HTTP_405_METHOD_NOT_ALLOWED
+            )
+
+    @action(
+        methods=['GET', 'PUT', 'DELETE'],
+        detail=True,
+        url_path='promotions/(?P<p_id>[^/.]+)',
+        url_name='promotion_detail'
+        )
+    def promotion_detail(self, request, p_id, pk=None):
+        '''viewing and updating promotions'''
+        staff = self.get_object()
+        promotion = staff.promotions.filter(id=p_id).first()
+        if promotion:
+            if request.method == 'GET':
+                return Response(PromotionSerializer(promotion).data)
+            if request.method == 'PUT':
+                serializer = PromotionSerializer(promotion, request.data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save(
+                    updated_by=request.user.email
+                    )
+                return Response(serializer.data)
+            if request.method == 'DELETE':
+                promotion.delete()
                 return Response(data=None, status=status.HTTP_204_NO_CONTENT)
         else:
             return Response(data=None, status=status.HTTP_404_NOT_FOUND)

@@ -20,29 +20,6 @@ class Department(models.Model):
         return self.name
 
 
-class Job(models.Model):
-    department = models.ForeignKey(
-        Department,
-        on_delete=models.CASCADE,
-        related_name='jobs'
-        )
-    description = models.CharField(max_length=128, blank=True)
-    institution = models.CharField(max_length=128)
-    start_date = models.DateField()
-    end_date = models.DateField(
-        blank=True,
-        null=True
-        )
-    is_current = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    created_by = models.CharField(max_length=64, blank=True)
-    updated = models.DateTimeField(auto_now=True)
-    updated_by = models.CharField(max_length=64, blank=True)
-
-    def __str__(self):
-        return f'{self.department.name}, {self.start_date} - {self.end_date}'
-
-
 class Staff(models.Model):
     '''Staff model object'''
     first_name = models.CharField(max_length=32)
@@ -53,11 +30,6 @@ class Staff(models.Model):
     work_phone = models.CharField(max_length=12, blank=True)
     address = models.CharField(max_length=128, blank=True)
     email = models.CharField(max_length=64, blank=True)
-    jobs = models.ManyToManyField(
-        Job,
-        related_name='staff',
-        blank=True
-        )
     staff_id = models.CharField(max_length=16, blank=True)
     registered_no = models.CharField(max_length=16, blank=True)
     sssnit_no = models.CharField(max_length=16, blank=True)
@@ -85,6 +57,34 @@ class Staff(models.Model):
 
     class Meta:
         ordering = ('first_name', 'last_name', 'other_names')
+
+
+class Appointment(models.Model):
+    department = models.ForeignKey(
+        Department,
+        on_delete=models.CASCADE,
+        related_name='appointments'
+        )
+    description = models.CharField(max_length=128, blank=True)
+    institution = models.CharField(max_length=128)
+    start_date = models.DateField()
+    end_date = models.DateField(
+        blank=True,
+        null=True
+        )
+    is_current = models.BooleanField(default=False)
+    staff = models.ForeignKey(
+        Staff,
+        on_delete=models.CASCADE,
+        related_name='appointments',
+        )
+    created = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    updated_by = models.CharField(max_length=64, blank=True)
+
+    def __str__(self):
+        return f'{self.department.name}, {self.start_date} - {self.end_date}'
 
 
 class Qualification(models.Model):
@@ -118,3 +118,45 @@ class Qualification(models.Model):
 
     class Meta:
         ordering = ('title', )
+
+
+class Rank(models.Model):
+    '''Teacher ranks in Job'''
+    title = models.CharField(max_length=64, unique=True)
+    department = models.ForeignKey(
+        Department,
+        on_delete=models.CASCADE,
+        related_name='ranks',
+        )
+    created = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    updated_by = models.CharField(max_length=64, blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Promotion(models.Model):
+    '''Teacher promotions'''
+    rank = models.ForeignKey(
+        Rank,
+        on_delete=models.CASCADE,
+        related_name='promotions'
+        )
+    date_promoted = models.DateField()
+    created = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    updated_by = models.CharField(max_length=64, blank=True)
+    staff = models.ForeignKey(
+        Staff,
+        on_delete=models.CASCADE,
+        related_name='promotions'
+        )
+
+    def __str__(self):
+        return f'{self.rank.title}, {self.date_promoted}'
+
+    class Meta:
+        ordering = ('date_promoted', )

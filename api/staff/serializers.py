@@ -4,7 +4,8 @@ from staff.models import (
     Qualification,
     Department,
     Staff,
-    Job
+    Appointment,
+    Promotion
     )
 
 
@@ -30,11 +31,11 @@ class DepartmentSerializer(ModelSerializer):
             ]
 
 
-class JobSerializer(ModelSerializer):
-    '''Staff Jobs serializer'''
+class AppointmentSerializer(ModelSerializer):
+    '''Staff Appointment serializer'''
 
     class Meta:
-        model = Job
+        model = Appointment
         fields = [
             'id',
             'department',
@@ -43,6 +44,7 @@ class JobSerializer(ModelSerializer):
             'start_date',
             'end_date',
             'is_current',
+            'staff',
             'created',
             'created_by',
             'updated',
@@ -50,6 +52,7 @@ class JobSerializer(ModelSerializer):
             ]
         read_only_fields = (
             'id',
+            'staff',
             'created',
             'created_by',
             'updated',
@@ -82,6 +85,22 @@ class QualificationSerializer(ModelSerializer):
             )
 
 
+class PromotionSerializer(ModelSerializer):
+    '''Staff Promotion serializer'''
+
+    class Meta:
+        model = Promotion
+        fields = '__all__'
+        read_only_fields = (
+            'id',
+            'staff',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+
+
 class StaffSerializer(ModelSerializer):
     '''Staff Serializer'''
 
@@ -99,10 +118,11 @@ class StaffSerializer(ModelSerializer):
             'work_phone',
             'mobile_phone',
             'email',
-            'jobs',
+            'qualifications',
+            'appointments',
+            'promotions',
             'user',
             'school',
-            'qualifications',
             'created',
             'created_by',
             'updated',
@@ -113,6 +133,8 @@ class StaffSerializer(ModelSerializer):
             'school',
             'user',
             'qualifications',
+            'appointments',
+            'promotions',
             'created',
             'created_by',
             'updated',
@@ -124,4 +146,5 @@ class StaffDetailSerializer(StaffSerializer):
     qualifications = QualificationSerializer(
         read_only=True, many=True
         )
-    jobs = serializers.StringRelatedField(many=True)
+    appointments = serializers.StringRelatedField(many=True)
+    promotions = serializers.StringRelatedField(many=True)

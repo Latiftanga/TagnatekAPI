@@ -4,6 +4,507 @@
         "pk": 1,
         "fields": {
             "title": "Senior Accountant",
+            "department": 1,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 2,
+        "fields": {
+            "title": "Accountant",
+            "department": 1,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 3,
+        "fields": {
+            "title": "Assistant Accountant",
+            "department": 1,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 4,
+        "fields": {
+            "title": "Senior Account Clerk",
+            "department": 1,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 5,
+        "fields": {
+            "title": "Senior Administrative Officer",
+            "department": 2,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 6,
+        "fields": {
+            "title": "Administrative Officer",
+            "department": 2,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 7,
+        "fields": {
+            "title": "Assistant Administrative Officer",
+            "department": 2,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 8,
+        "fields": {
+            "title": "Senior Clerk",
+            "department": 2,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 9,
+        "fields": {
+            "title": "Senior Domestic Bursar",
+            "department": 3,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 10,
+        "fields": {
+            "title": "Domestic Bursar",
+            "department": 3,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 11,
+        "fields": {
+            "title": "Assitant Domestic Bursar",
+            "department": 3,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 12,
+        "fields": {
+            "title": "Senior Matron",
+            "department": 3,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 13,
+        "fields": {
+            "title": "Matron",
+            "department": 3,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 14,
+        "fields": {
+            "title": "Chief Driver",
+            "department": 4,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 15,
+        "fields": {
+            "title": "Principal Driver",
+            "department": 4,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 16,
+        "fields": {
+            "title": "Senior Driver",
+            "department": 4,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 17,
+        "fields": {
+            "title": "Senior Internal Auditor",
+            "department": 5,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 18,
+        "fields": {
+            "title": "Internal Auditor",
+            "department": 5,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 19,
+        "fields": {
+            "title": "Assistant Internal Auditor",
+            "department": 5,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 20,
+        "fields": {
+            "title": "Internal Audit Assistant",
+            "department": 5,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 21,
+        "fields": {
+            "title": "Laboratory Technician",
+            "department": 6,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 22,
+        "fields": {
+            "title": "Assistant Laboratory Technician",
+            "department": 6,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 23,
+        "fields": {
+            "title": "Senior Laboratory Assistant",
+            "department": 6,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 24,
+        "fields": {
+            "title": "Senior Liberian",
+            "department": 7,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 25,
+        "fields": {
+            "title": "Liberian",
+            "department": 7,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 26,
+        "fields": {
+            "title": "Assistant Liberian",
+            "department": 7,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 27,
+        "fields": {
+            "title": "Senior Library Assistant",
+            "department": 7,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 28,
+        "fields": {
+            "title": "Senior Private Secretary",
+            "department": 8,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 29,
+        "fields": {
+            "title": "Private Secretary",
+            "department": 8,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 30,
+        "fields": {
+            "title": "Stenographer Secretary",
+            "department": 8,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 31,
+        "fields": {
+            "title": "Stenographer",
+            "department": 8,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 32,
+        "fields": {
+            "title": "Senior Typist",
+            "department": 8,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 33,
+        "fields": {
+            "title": "Deputy Chief Security Officer",
+            "department": 9,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 34,
+        "fields": {
+            "title": "Principal Security Officer",
+            "department": 9,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 35,
+        "fields": {
+            "title": "Principal Storekeeper",
+            "department": 10,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 36,
+        "fields": {
+            "title": "Supply Officer",
+            "department": 10,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 37,
+        "fields": {
+            "title": "Teacher",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 38,
+        "fields": {
+            "title": "Superintendent II",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 39,
+        "fields": {
+            "title": "Superintendent I",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 40,
+        "fields": {
+            "title": "Senior Superintendent II",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 41,
+        "fields": {
+            "title": "Senior Superintendent I",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 42,
+        "fields": {
+            "title": "Principal Superintendent",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 43,
+        "fields": {
+            "title": "Assistant Director II",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 44,
+        "fields": {
+            "title": "Assistant Director I",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 45,
+        "fields": {
+            "title": "Deputy Director",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 46,
+        "fields": {
+            "title": "Director General",
+            "department": 11,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 47,
+        "fields": {
+            "title": "Senior Technical Officer",
+            "department": 12,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 48,
+        "fields": {
+            "title": "Assistant Technical Officer",
+            "department": 12,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 49,
+        "fields": {
+            "title": "Technical Officer",
+            "department": 12,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 50,
+        "fields": {
+            "title": "Foreman",
+            "department": 13,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "staff.rank",
+        "pk": 51,
+        "fields": {
+            "title": "Workshop Supervisor",
+            "department": 13,
             "created": "2021-12-01T16:15:27.853926Z",
             "updated": "2021-12-01T16:15:27.854017Z"
         }
