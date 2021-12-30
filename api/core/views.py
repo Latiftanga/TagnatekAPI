@@ -1,9 +1,12 @@
-from rest_framework import exceptions
+from rest_framework import exceptions, viewsets, mixins
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import (
+    api_view, authentication_classes, permission_classes
+    )
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from core.serializers import SchoolSerilizer
 from core.models import Role
 from core.authentication import JWTAuthentication
 from core import serializers, models
@@ -112,3 +115,43 @@ class RoleViewSets(ModelViewSet):
     permission_classes = (IsStaff, )
 
     serializer_class = serializers.RoleSerializer
+
+
+@api_view(['GET'])
+@authentication_classes([
+    JWTAuthentication,
+    authentication.TokenAuthentication
+    ])
+@permission_classes([IsStaff])
+def current_school(request):
+    '''Current School Information'''
+
+    school = request.user.school
+    serializer = SchoolSerilizer(school)
+    return Response(serializer.data)
+
+
+class CRUDViewSets(
+        mixins.ListModelMixin,
+        mixins.CreateModelMixin,
+        mixins.RetrieveModelMixin,
+        mixins.UpdateModelMixin,
+        mixins.DestroyModelMixin,
+        viewsets.GenericViewSet             
+        ):
+
+    def perform_create(self, serializer):
+        """Create a new object"""
+        serializer.save(
+            created_by=self.request.user.email
+            )
+
+    def get_queryset(self):
+        return self.queryset.filter(
+            school=self.request.user.school
+            )
+
+    def perform_update(self, serializer):
+        return serializer.save(
+            updated_by=self.request.user.email
+            )

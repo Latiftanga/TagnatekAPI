@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     #Local Apps
     'core.apps.CoreConfig',
     'staff.apps.StaffConfig',
+    'students.apps.StudentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -98,10 +99,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'core.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ]
 }
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 

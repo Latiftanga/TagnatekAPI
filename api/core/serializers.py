@@ -1,7 +1,15 @@
 from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
-from core.models import Role, Permission
+from core.models import Role, Permission, School
+
+
+class SchoolSerilizer(serializers.ModelSerializer):
+    '''Serializer for school model'''
+
+    class Meta:
+        model = School
+        fields = '__all__'
 
 
 class UserSerializer(serializers.ModelSerializer):
