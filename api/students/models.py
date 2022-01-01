@@ -13,7 +13,7 @@ class Programme(models.Model):
         unique=True,
         blank=True,
         null=True
-    )
+        )
     school = models.ForeignKey(
         School,
         on_delete=models.CASCADE,
@@ -42,7 +42,7 @@ class Class(models.Model):
         Programme,
         on_delete=models.CASCADE,
         related_name='classes',
-        ) 
+        )
     division = models.CharField(
         max_length=32,
         help_text='Programme division'
@@ -58,7 +58,7 @@ class Class(models.Model):
 
     @property
     def name(self):
-        return f'{self.grade}{self.division}' 
+        return f'{self.grade}{self.division}'
 
     def __str__(self):
         return self.name
@@ -76,7 +76,7 @@ class House(models.Model):
         School,
         on_delete=models.CASCADE,
         related_name='houses'
-    )
+        )
     created = models.DateTimeField(auto_now_add=True)
     created_by = models.CharField(max_length=64, blank=True)
     updated = models.DateTimeField(auto_now=True)
@@ -87,6 +87,45 @@ class House(models.Model):
 
     class Meta:
         ordering = ('name', )
+
+
+class Guardian(models.Model):
+    '''Staff model object'''
+    class Gender(models.TextChoices):
+        Male = 'M',
+        Female = 'F'
+    title = models.CharField(max_length=16)
+    name = models.CharField(max_length=32)
+    gender = models.CharField(max_length=1, choices=Gender.choices)
+    relation = models.CharField(max_length=64)
+    mobile_phone = models.CharField(max_length=12, blank=True)
+    home_phone = models.CharField(max_length=12, blank=True)
+    address = models.CharField(max_length=128, blank=True)
+    email = models.CharField(max_length=64, blank=True)
+    user = models.OneToOneField(
+        get_user_model(),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='guardian'
+        )
+    school = models.ForeignKey(
+        School,
+        on_delete=models.CASCADE,
+        related_name='guardians',
+        null=True,
+        blank=True
+        )
+    created = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    updated_by = models.CharField(max_length=64, blank=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        ordering = ('name',)
 
 
 class Student(models.Model):
@@ -129,6 +168,10 @@ class Student(models.Model):
         related_name='students',
         null=True,
         blank=True
+        )
+    guardians = models.ManyToManyField(
+        Guardian,
+        related_name='students'
         )
     created = models.DateTimeField(auto_now_add=True)
     created_by = models.CharField(max_length=64, blank=True)

@@ -224,7 +224,7 @@ class StaffViewSets(
         '''Staff promotion'''
         staff = self.get_object()
 
-        if request.method =='GET':
+        if request.method == 'GET':
             promotions = staff.promotions.all()
             serializer = PromotionSerializer(promotions, many=True)
             return Response(serializer.data)

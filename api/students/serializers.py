@@ -1,6 +1,8 @@
 from rest_framework import serializers
-from students.models import Student
-from students.models import Programme, Class, House
+from students.models import (
+    Programme, Class, House,
+    Guardian, Student
+    )
 
 
 class ProgrammeSerializer(serializers.ModelSerializer):
@@ -58,6 +60,23 @@ class HouseSerializer(serializers.ModelSerializer):
         read_only_fields = (
             'id',
             'school',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+
+
+class GuaridianSerializer(serializers.ModelSerializer):
+    '''Student serializer'''
+
+    class Meta:
+        model = Guardian
+        fields = '__all__'
+        read_only_fields = (
+            'id',
+            'school',
+            'user',
             'created',
             'created_by',
             'updated',

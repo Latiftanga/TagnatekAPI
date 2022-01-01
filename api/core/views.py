@@ -137,7 +137,7 @@ class CRUDViewSets(
         mixins.RetrieveModelMixin,
         mixins.UpdateModelMixin,
         mixins.DestroyModelMixin,
-        viewsets.GenericViewSet             
+        viewsets.GenericViewSet
         ):
 
     def perform_create(self, serializer):
