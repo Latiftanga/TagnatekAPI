@@ -1,6 +1,7 @@
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
+from students.serializers import StudentImgUploadSerializer
 from students.serializers import StudentSerializer
 from core.permissions import IsStaff
 from core.views import CRUDViewSets
@@ -48,6 +49,8 @@ class StudentsViewSets(CRUDViewSets):
         if self.action == 'guardians'\
                 or self.action == 'guardian_detail':
             return GuaridianSerializer
+        if self.action == 'upload_img':
+            return StudentImgUploadSerializer
         return self.serializer_class
 
     @action(methods=['GET', 'POST'], detail=True, url_path='guardians')
@@ -68,7 +71,10 @@ class StudentsViewSets(CRUDViewSets):
                 student.save()
                 return Response(GuaridianSerializer(guardian).data)
             else:
-                return Response(data=None, status=status.HPP_400_BAD_REQUEST)
+                return Response(
+                    serializer.errors,
+                    status=status.HPP_400_BAD_REQUEST
+                    )
 
     @action(
         methods=['GET', 'PUT', 'DELET'],
@@ -96,3 +102,15 @@ class StudentsViewSets(CRUDViewSets):
                 {'detail': 'Not found'},
                 status=status.HTTP_404_NOT_FOUND
                 )
+
+    @action(methods=['POST'], detail=True, url_path='upload-img')
+    def upload_img(self, request, pk=None):
+        '''Upload student image'''
+        student = self.get_object()
+        serializer = self.get_serializer(student, data=self.request.data)  # updating
+
+        if serializer.is_valid():
+            serializer.save(updated_by=request.user.email)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

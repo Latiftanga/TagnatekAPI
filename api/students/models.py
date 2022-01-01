@@ -1,7 +1,15 @@
+import os
 from django.db import models
 from core.models import School
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
+
+def img_file_path(instance, filename):
+    """Generate file path for new student logo"""
+    ext = filename.split('.')[-1]  # [-1] returns the last item from a list.
+    filename = f'_{instance.id}.{ext}'
+    file_path = f'uploads/{instance._meta.model.__name__.lower()}/'
+    return os.path.join(file_path, filename)
 
 
 class Programme(models.Model):
@@ -167,6 +175,11 @@ class Student(models.Model):
         on_delete=models.CASCADE,
         related_name='students',
         null=True,
+        blank=True
+        )
+    image = models.ImageField(
+        None,
+        upload_to=img_file_path,
         blank=True
         )
     guardians = models.ManyToManyField(

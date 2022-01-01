@@ -99,3 +99,11 @@ class StudentSerializer(serializers.ModelSerializer):
             'updated',
             'updated_by'
             )
+
+
+class StudentImgUploadSerializer(serializers.ModelSerializer):
+    '''Student image upload serializer'''
+    class Meta:
+        model = Student
+        fields = ('id', 'image')
+        read_only_fields = ('id', )
