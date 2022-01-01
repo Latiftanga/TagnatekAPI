@@ -7,8 +7,10 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 
-# router.register('', views.StudentsViewSets)
 router.register('programmes', views.ProgrammeViewSets)
+router.register('classes', views.ClassViewSets)
+router.register('houses', views.HouseViewSets)
+router.register('', views.StudentsViewSets)
 
 
 app_name = 'students'

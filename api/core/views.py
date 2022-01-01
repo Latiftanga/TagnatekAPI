@@ -143,7 +143,8 @@ class CRUDViewSets(
     def perform_create(self, serializer):
         """Create a new object"""
         serializer.save(
-            created_by=self.request.user.email
+            created_by=self.request.user.email,
+            school=self.request.user.school
             )
 
     def get_queryset(self):
