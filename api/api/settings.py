@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'staff.apps.StaffConfig',
     'students.apps.StudentsConfig',
+    'gradebook.apps.GradebookConfig',
 ]
 
 MIDDLEWARE = [

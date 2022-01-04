@@ -1,5 +1,5 @@
 from django.urls import path, include
-from staff import views
+from gradebook import views
 from rest_framework.routers import DefaultRouter
 
 
@@ -7,11 +7,12 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 
-router.register('departments', views.DepartmentViewSets)
-router.register('', views.StaffViewSets)
+router.register('years', views.YearViewSets)
+router.register('subjects', views.SubjectViewSets)
+router.register('classes', views.ClassViewSets)
 
 
-app_name = 'staff'
+app_name = 'gradebook'
 
 
 urlpatterns = [
