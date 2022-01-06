@@ -1,0 +1,23 @@
+[
+    {
+        "model": "gradebook.assignmenttype",
+        "pk": 1,
+        "fields": {
+            "name": "CA",
+            "percentage": 30,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    },
+    {
+        "model": "gradebook.assignmenttype",
+        "pk": 2,
+        "fields": {
+            "name": "SA",
+            "percentage": 70,
+            "created": "2021-12-01T16:15:27.853926Z",
+            "updated": "2021-12-01T16:15:27.854017Z"
+        }
+    }
+
+]

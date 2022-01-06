@@ -1,0 +1,292 @@
+[
+    {
+        "model": "gradebook.subject",
+        "pk": 1,
+        "fields": {"name": "Animal Husbandry"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 2,
+        "fields": {"name": "Applied Electricity"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 3,
+        "fields": {"name": "Arabic"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 4,
+        "fields": {"name": "Auto Mechanic"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 5,
+        "fields": {"name": "Basketry"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 6,
+        "fields": {"name": "Biology"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 7,
+        "fields": {"name": "Building Construction"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 8,
+        "fields": {"name": "Business Management"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 9,
+        "fields": {"name": "Ceramics"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 10,
+        "fields": {"name": "Chemistry"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 11,
+        "fields": {"name": "Christian Religious Studies"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 12,
+        "fields": {"name": "Clerical Office Duties"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 13,
+        "fields": {"name": "Clothing and Textiles"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 14,
+        "fields": {"name": "Crob Husbandry and Horticultre"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 15,
+        "fields": {"name": "Dagaare"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 16,
+        "fields": {"name": "Dagbani"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 17,
+        "fields": {"name": "Dangbe"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 18,
+        "fields": {"name": "Economics"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 19,
+        "fields": {"name": "Electronics"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 20,
+        "fields": {"name": "English Language"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 21,
+        "fields": {"name": "Ewe"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 22,
+        "fields": {"name": "Fante"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 23,
+        "fields": {"name": "Financial Accounting"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 24,
+        "fields": {"name": "Fisheries"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 25,
+        "fields": {"name": "Food and Nutrition"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 26,
+        "fields": {"name": "Forestry"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 27,
+        "fields": {"name": "French"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 28,
+        "fields": {"name": "Ga"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 29,
+        "fields": {"name": "General Agriculture"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 30,
+        "fields": {"name": "General Knowledge in Art"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 31,
+        "fields": {"name": "Geography"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 32,
+        "fields": {"name": "Gonja"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 33,
+        "fields": {"name": "Government"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 34,
+        "fields": {"name": "Graphic Design"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 35,
+        "fields": {"name": "History"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 36,
+        "fields": {"name": "Information and Communication Technology"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 37,
+        "fields": {"name": "Integrated Science"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 38,
+        "fields": {"name": "Islamic Studies"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 39,
+        "fields": {"name": "Jewellery"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 40,
+        "fields": {"name": "Kasena"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 41,
+        "fields": {"name": "Leather Work"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 42,
+        "fields": {"name": "Literature in English"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 43,
+        "fields": {"name": "Management in Living"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 44,
+        "fields": {"name": "Mathematics"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 45,
+        "fields": {"name": "Metal Work"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 46,
+        "fields": {"name": "Music"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 47,
+        "fields": {"name": "Nzema"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 48,
+        "fields": {"name": "Physics"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 49,
+        "fields": {"name": "Picture Making"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 50,
+        "fields": {"name": "Principle of Cost Accounting"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 51,
+        "fields": {"name": "Sculpture"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 52,
+        "fields": {"name": "Social Studies"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 53,
+        "fields": {"name": "Technical Drawing"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 54,
+        "fields": {"name": "Textiles"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 55,
+        "fields": {"name": "Twi"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 56,
+        "fields": {"name": "Typewriting"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 57,
+        "fields": {"name": "West African Traditional Religion"}
+    },
+    {
+        "model": "gradebook.subject",
+        "pk": 58,
+        "fields": {"name": "Wood Work"}
+    }
+]

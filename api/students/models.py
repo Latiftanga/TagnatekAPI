@@ -4,6 +4,7 @@ from core.models import School
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 
+
 def img_file_path(instance, filename):
     """Generate file path for new student logo"""
     ext = filename.split('.')[-1]  # [-1] returns the last item from a list.
@@ -149,12 +150,13 @@ class Student(models.Model):
     mobile_phone = models.CharField(max_length=12, blank=True)
     address = models.CharField(max_length=128, blank=True)
     email = models.CharField(max_length=64, blank=True)
-    clas = models.ForeignKey(
+    klass = models.ForeignKey(
         Class,
         on_delete=models.SET_NULL,
         related_name='students',
         null=True,
         blank=True,
+        verbose_name='class'
         )
     house = models.ForeignKey(
         House,
@@ -184,7 +186,8 @@ class Student(models.Model):
         )
     guardians = models.ManyToManyField(
         Guardian,
-        related_name='students'
+        related_name='students',
+        blank=True
         )
     created = models.DateTimeField(auto_now_add=True)
     created_by = models.CharField(max_length=64, blank=True)

@@ -8,7 +8,9 @@ class IsStaff(BasePermission):
 
 class IsTeacher(BasePermission):
     def has_permission(self, request, view):
-        return request.user.role.name == 'teacher'
+        return request.user.role.name == 'teacher'\
+            or request.user.role.name == 'admin' \
+            or request.user.role.name == 'super'
 
 
 class IsStudent(BasePermission):

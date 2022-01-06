@@ -107,7 +107,9 @@ class StudentsViewSets(CRUDViewSets):
     def upload_img(self, request, pk=None):
         '''Upload student image'''
         student = self.get_object()
-        serializer = self.get_serializer(student, data=self.request.data)  # updating
+        serializer = self.get_serializer(
+            student, data=self.request.data
+            )  # updating
 
         if serializer.is_valid():
             serializer.save(updated_by=request.user.email)

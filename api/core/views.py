@@ -139,16 +139,12 @@ class CRUDViewSets(
         mixins.DestroyModelMixin,
         viewsets.GenericViewSet
         ):
+    permission_classes = (IsStaff, )
 
     def perform_create(self, serializer):
         """Create a new object"""
         serializer.save(
             created_by=self.request.user.email,
-            school=self.request.user.school
-            )
-
-    def get_queryset(self):
-        return self.queryset.filter(
             school=self.request.user.school
             )
 

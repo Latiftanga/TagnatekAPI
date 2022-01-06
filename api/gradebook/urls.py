@@ -7,14 +7,19 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 
-router.register('years', views.YearViewSets)
+router.register('terms', views.TermViewSets)
 router.register('subjects', views.SubjectViewSets)
 router.register('classes', views.ClassViewSets)
+router.register('periods', views.PeriodViewSets)
+router.register('assignment-types', views.AssignmentTypesViewSets)
+router.register('assignments', views.AssignmentViewSets)
+router.register('scores', views.ScoreViewSets)
 
 
 app_name = 'gradebook'
 
 
 urlpatterns = [
+    path('year', views.YearAPIView.as_view()),
     path('', include(router.urls))
     ]
