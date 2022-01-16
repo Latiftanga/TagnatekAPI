@@ -71,6 +71,19 @@ class PeriodSerializer(serializers.ModelSerializer):
             'updated_by'
             )
 
+class ClassTypeSerializer(serializers.ModelSerializer):
+    '''Class type serializer'''
+    class Meta:
+        model = models.ClassType
+        fields = '__all__'
+        read_only_fields = (
+            'id',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+
 
 class ClassSerializer(serializers.ModelSerializer):
     '''Class Serializer'''
@@ -145,10 +158,6 @@ class AssignmentSerializer(serializers.ModelSerializer):
 
 class ScoreSerializer(serializers.ModelSerializer):
     '''Serializer for Assignment Scores'''
-    def __init__(self, *args, **kwargs):
-        many = kwargs.pop('many', True)
-        super(ScoreSerializer, self).__init__(many=many, *args, **kwargs)
-
     class Meta:
         model = models.Score
         fields = '__all__'
@@ -163,3 +172,21 @@ class ScoreSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data.pop('school', None)
         return models.Score.objects.create(**validated_data)
+
+
+class Graderializer(serializers.ModelSerializer):
+    '''Serializer for Grade'''
+
+    class Meta:
+        model = models.Grade
+        fields = '__all__'
+        read_only_fields = (
+            'id',
+            'created',
+            'created_by',
+            'updated',
+            'updated_by'
+            )
+    def create(self, validated_data):
+        validated_data.pop('school', None)
+        return models.Grade.objects.create(**validated_data)

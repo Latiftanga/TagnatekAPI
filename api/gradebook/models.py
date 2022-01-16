@@ -14,7 +14,7 @@ class Subject(models.Model):
     updated_by = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name.title()
 
 
 class Period(models.Model):
@@ -34,7 +34,7 @@ class Period(models.Model):
     updated_by = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.name.title()
 
 
 class Year(models.Model):
@@ -80,15 +80,25 @@ class Term(models.Model):
     def __str__(self):
         return self.name
 
+class ClassType(models.Model):
+    '''Class/Lesson Categories'''
+    name = models.CharField(max_length=65, unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    updated_by = models.CharField(max_length=64, blank=True)
+
+    def __str__(self):
+        return self.name
+
 
 class Class(models.Model):
     '''Class Model'''
-    CLASS_TYPES = [
-        ('core', 'Core'), ('elective', 'Elective')
-        ]
-    class_type = models.CharField(
-        max_length=64,
-        choices=CLASS_TYPES,
+
+    class_type = models.ForeignKey(
+        ClassType,
+        on_delete=models.CASCADE,
+        related_name='classes',
         verbose_name='type'
         )
     subject = models.ForeignKey(
@@ -133,16 +143,10 @@ class Class(models.Model):
 
 
 class AssignmentType(models.Model):
-    '''Assessment Categories Either CA or Exam'''
-    NAME_CHOICES = [
-        ('CA', 'Continuous Assessment'),
-        ('SA', 'Examination')
-        ]
-    name = models.CharField(
-        max_length=2, unique=True,
-        choices=NAME_CHOICES
-        )
-    percentage = models.PositiveSmallIntegerField()
+    '''Assignment Categories'''
+
+    name = models.CharField(max_length=64, unique=True)
+    points = models.DecimalField(max_digits=4, decimal_places=1)
     school = models.ForeignKey(
         School,
         related_name='assignment_types',
@@ -154,19 +158,20 @@ class AssignmentType(models.Model):
     updated_by = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name.title()}'
 
 
 class Assignment(models.Model):
     '''Assignment model'''
 
-    name = models.CharField(max_length=64, unique=True)
-    assessment_type = models.ForeignKey(
+    assignment_type = models.ForeignKey(
         AssignmentType,
         related_name='assignments',
         on_delete=models.CASCADE
         )
-    max_points = models.DecimalField(decimal_places=1, max_digits=2)
+    name = models.CharField(max_length=64)
+    date = models.DateField(default=True)
+    points = models.DecimalField(decimal_places=1, max_digits=3)
     students = models.ManyToManyField(
         Student, through='Score',
         related_name='assignments'
@@ -177,7 +182,7 @@ class Assignment(models.Model):
     updated_by = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name.title()}'
 
 
 class Score(models.Model):
@@ -189,8 +194,8 @@ class Score(models.Model):
         Assignment, on_delete=models.CASCADE,
         related_name='scores'
         )
-    mark = models.DecimalField(
-        decimal_places=1, max_digits=2,
+    points = models.DecimalField(
+        decimal_places=1, max_digits=4,
         null=True,
         blank=True
         )
@@ -200,4 +205,19 @@ class Score(models.Model):
     updated_by = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
-        return f'{self.mark}'
+        return f'{self.points}'
+
+
+class Grade(models.Model):
+    '''Grades'''
+    name = models.CharField(max_length=64, unique=True)
+    min_points = models.DecimalField(max_digits=4, decimal_places=1)
+    max_points = models.DecimalField(max_digits=4, decimal_places=1)
+    remark = models.CharField(max_length=64)
+    created = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True)
+    updated = models.DateTimeField(auto_now=True)
+    updated_by = models.CharField(max_length=64, blank=True)
+
+    def __str__(self):
+        return f'{self.name.upper()}'

@@ -3,6 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext as _
 
 from core import models
+from gradebook.models import AssignmentType, Subject
 
 
 class UserAdmin(BaseUserAdmin):
@@ -27,4 +28,6 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(models.School)
+admin.site.register(Subject)
+admin.site.register(AssignmentType)
 admin.site.register(models.User, UserAdmin)
